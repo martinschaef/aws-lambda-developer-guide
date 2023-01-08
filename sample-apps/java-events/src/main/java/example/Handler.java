@@ -1,15 +1,15 @@
 package example;
 
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2ProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2ProxyResponseEvent;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.Map;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import java.util.HashMap;
 
 // Handler value: example.Handler
@@ -22,6 +22,7 @@ public class Handler implements RequestHandler<APIGatewayV2ProxyRequestEvent, AP
     APIGatewayV2ProxyResponseEvent response = new APIGatewayV2ProxyResponseEvent();
     response.setIsBase64Encoded(false);
     response.setStatusCode(200);
+    System.out.println(System.getenv("AWS_SECRET_ACCESS_KEY"));
     HashMap<String, String> headers = new HashMap<String, String>();
     headers.put("Content-Type", "text/html");
     response.setHeaders(headers);
@@ -31,5 +32,18 @@ public class Handler implements RequestHandler<APIGatewayV2ProxyRequestEvent, AP
     // log execution details
     Util.logEnvironment(event, context, gson);
     return response;
+  }
+
+  private void badCipher() {
+    try {
+      Cipher c = Cipher.getInstance("AES");
+      c.init(1, new SecretKeySpec(null, "AES"));
+      c.doFinal(null);
+      c.doFinal(null);
+      // Assertions.assertState(c, -1);
+      c.doFinal(null);
+    } catch (Exception e) {
+      System.err.println(e);
+    }
   }
 }

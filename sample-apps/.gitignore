@@ -15,3 +15,6 @@ Gemfile.lock
 lib
 __pycache__
 *.pyc
+.gradle
+.idea
+*.iml

@@ -7,7 +7,7 @@ Resources:
     Properties:
       CodeUri: build/distributions/java-events.zip
       Handler: example.Handler
-      Runtime: java8
+      Runtime: java11
       Description: Java function
       MemorySize: 512
       Timeout: 10

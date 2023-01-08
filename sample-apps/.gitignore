@@ -7,7 +7,6 @@ out.json
 bucket-name.txt
 target
 build
-.gradle
 *.zip
 bin
 obj

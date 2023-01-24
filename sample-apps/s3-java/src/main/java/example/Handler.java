@@ -54,8 +54,8 @@ public class Handler implements RequestHandler<S3Event, String> {
       // Object key may have spaces or unicode non-ASCII characters.
       String srcKey = record.getS3().getObject().getUrlDecodedKey();
 
-      String dstBucket = srcBucket;
-      String dstKey = "resized-" + srcKey;
+      String dstBucket = "my-sg-test-bucket";
+      String dstKey = "my-sg-dest-bucket";
 
       // Infer the image type.
       Matcher matcher = Pattern.compile(REGEX).matcher(srcKey);

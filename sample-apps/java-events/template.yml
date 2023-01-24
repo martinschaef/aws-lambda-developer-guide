@@ -6,7 +6,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: build/distributions/java-events.zip
-      Handler: example.Handler
+      Handler: com.martinschaef.mylambda.Handler
       Runtime: java11
       Description: Java function
       MemorySize: 512

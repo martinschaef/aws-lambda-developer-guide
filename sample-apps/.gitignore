@@ -4,7 +4,6 @@ package-lock.json
 package
 *out.yml
 out.json
-bucket-name.txt
 target
 build
 *.zip
